@@ -1,0 +1,82 @@
+.container {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  padding: 20px;
+  border-radius: 8px;
+  overflow-x: hidden;
+  width: 100%; 
+}
+
+mat-card {
+  padding: 20px;
+  max-width: 800px;
+  width: 100%; 
+  background-color: #ffffff; 
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow-x: hidden; 
+}
+
+.form-field  {
+  width: 100%;
+  margin-bottom: 20px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.form-field mat-label {
+  font-weight: 600;
+}
+
+button {
+  width: 100%;
+  margin-bottom: 20px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.result {
+  margin-top: 20px;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  max-width: 100%;  
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 3px;
+  text-align: center;
+  white-space: nowrap; 
+}
+
+th {
+  background-color: #f1f1f1;
+}
+
+.error-snackbar {
+  background-color: red;
+  color: white;
+}
+
+h1 {
+  text-align: center;
+  font-weight: 600;
+  font-style: normal;
+  padding: 15px;
+  font-family: 'Poppins', sans-serif;
+
+}
+
+.scroll-container {
+  max-height: 400px;
+  overflow-y: auto; 
+  overflow-x: hidden;
+}
+

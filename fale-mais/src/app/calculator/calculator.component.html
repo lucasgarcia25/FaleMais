@@ -1,0 +1,86 @@
+<div class="container">
+  <mat-card>
+    <h1>Calculadora FaleMais</h1>
+    <form #calcForm="ngForm" (ngSubmit)="calculate()">
+      <div class="row">
+        <div class="col-md-6">
+          <mat-form-field class="form-field" appearance="fill">
+            <mat-label>Origem</mat-label>
+            <mat-select [(ngModel)]="origin" name="origin" required (selectionChange)="onOriginChange()">
+              <mat-option value="011">011</mat-option>
+              <mat-option value="016">016</mat-option>
+              <mat-option value="017">017</mat-option>
+              <mat-option value="018">018</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6">
+          <mat-form-field class="form-field" appearance="fill">
+            <mat-label>Destino</mat-label>
+            <mat-select [(ngModel)]="destination" name="destination" required (focus)="onDestinationFocus()">
+              <mat-option *ngFor="let dest of availableDestinations" [value]="dest">{{ dest }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <mat-form-field class="form-field" appearance="fill">
+            <mat-label>Tempo (minutos)</mat-label>
+            <input matInput type="number" [(ngModel)]="time" name="time" required>
+          </mat-form-field>
+        </div>
+        <div class="col-md-6">
+          <mat-form-field class="form-field" appearance="fill">
+            <mat-label>Planos</mat-label>
+            <mat-select [(ngModel)]="plan" name="plan" required>
+              <mat-option value="FaleMais30">FaleMais 30</mat-option>
+              <mat-option value="FaleMais60">FaleMais 60</mat-option>
+              <mat-option value="FaleMais120">FaleMais 120</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!calcForm.valid" class="full-width">Calcular</button>
+    </form>
+
+    <div *ngIf="resultData.data.length > 0" class="result">
+      <div class="scroll-container">
+        <table mat-table [dataSource]="resultData" class="mat-elevation-z8">
+          <ng-container matColumnDef="origin">
+            <th mat-header-cell *matHeaderCellDef>Origem</th>
+            <td mat-cell *matCellDef="let element">{{ element?.origin }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="destination">
+            <th mat-header-cell *matHeaderCellDef>Destino</th>
+            <td mat-cell *matCellDef="let element">{{ element?.destination }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="time">
+            <th mat-header-cell *matHeaderCellDef>Tempo</th>
+            <td mat-cell *matCellDef="let element">{{ element?.time }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="plan">
+            <th mat-header-cell *matHeaderCellDef>Plano</th>
+            <td mat-cell *matCellDef="let element">{{ element?.plan }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="withPlan">
+            <th mat-header-cell *matHeaderCellDef>Com Plano</th>
+            <td mat-cell *matCellDef="let element">{{ element?.withPlan | currency : "BRL" }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="withoutPlan">
+            <th mat-header-cell *matHeaderCellDef>Sem Plano</th>
+            <td mat-cell *matCellDef="let element">{{ element?.withoutPlan | currency : "BRL" }}</td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+      </div>
+    </div>
+  </mat-card>
+</div>
