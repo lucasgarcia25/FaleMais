@@ -1,0 +1,13 @@
+{
+  "profiles": {
+    "Docker Compose": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "serviceActions": {
+        "falemais.api": "StartDebugging"
+      },
+      "applicationUrl": "https://localhost:7202;http://localhost:7202"
+
+    }
+  }
+}
